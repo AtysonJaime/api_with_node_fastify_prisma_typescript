@@ -2,9 +2,13 @@
 // Estou utilizando fastify
 
 import fastify, { FastifyInstance } from "fastify"
-
+import { userRoutes } from "./routes/user.routes"
 const app: FastifyInstance = fastify()
 
+app.register(userRoutes, {
+	// Registar nossos arquivos de rotas
+	prefix: "/users",
+})
 // Função para escutar o servidor na porta XXXX
 app.listen(
 	{

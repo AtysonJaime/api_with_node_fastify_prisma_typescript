@@ -13,20 +13,23 @@ datasource db {
 // Local onde eu crio os models, ou seja, as tabelas do meu banco de dados.
 
 model User {
-  id        String   @id @default(uuid())
+  id        String     @id @default(uuid())
   name      String
-  email     String   @unique // Quer dizer q é unico
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  email     String     @unique // Quer dizer q é unico
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+  Contacts  Contacts[]
 
   @@map("users") // Para referenciar essa tabela
 }
 
 model Contacts {
-  id    String @id @default(uuid())
-  name  String
-  email String
-  phone String
+  id     String @id @default(uuid())
+  name   String
+  email  String
+  phone  String
+  userId String
+  user   User   @relation(fields: [userId], references: [id]) // Criar relacionamento com outras tabelas
 
   @@map("contacts") // Para referenciar essa tabela
 }

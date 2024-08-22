@@ -9,6 +9,22 @@
 >
 > Este repositório foi criado com o objetivo de estudar e aplicar tecnologias essenciais para o desenvolvimento de APIs. Ele demonstra a implementação de operações CRUD (Criar, Ler, Atualizar e Deletar) em uma agenda de contatos.
 
+## 📋 Sumário
+
+- API de Agenda de Contatos
+  - [📋 Sumário](#-sumário)
+  - [💻 Tecnologias](#-tecnologias)
+  - [🏗️ Build Setup](#️-build-setup)
+  - [🚀 Rotas](#-rotas)
+    - [Users](#users-users)
+      - [Criação de usuário](#criação-de-usuário)
+    - [Contacts](#contacts-contacts)
+      - [Listagem de contatos](#listagem-de-contatos)
+      - [Criação de contatos](#criação-de-contatos)
+      - [Edição de contatos](#edição-de-contatos)
+      - [Exclusão de contatos](#exclusão-de-contatos)
+  - [📝 Licença](#-licença)
+
 ---
 
 ## 💻 Tecnologias
@@ -22,8 +38,6 @@ Esse projeto utiliza as seguinte tecnologias para o desenvolvimento:
 | [Prisma](https://www.prisma.io) |
 | [Eslint](https://eslint.org)    |
 | [Prettier](https://prettier.io) |
-| Row6                            |
-| Row7                            |
 
 ## 🏗️ Build Setup
 
@@ -52,6 +66,42 @@ Esse projeto utiliza as seguinte tecnologias para o desenvolvimento:
 ```sh
   Server is running on port 3100
 ```
+
+> Caso deseje visualizar seu banco, rode o seguinte comando:
+
+```sh
+  npm prisma studio
+```
+
+## 🚀 Rotas
+
+> A API de Agenda de Contatos possui as seguintes rotas:
+
+### Users: `/users`
+
+#### Criação de usuário
+
+- **Método:** `POST`;
+- **Rota:** `/`;
+- **Corpo da requisição:**
+  - `name`: string;
+  - `email`: string;
+- **Resposta:**
+  - `id`: string;
+  - `name`: string;
+  - `email`: string;
+
+---
+
+### Contacts: `/contacts`
+
+#### Listagem de contatos
+
+#### Criação de contatos
+
+#### Edição de contatos
+
+#### Exclusão de contatos
 
 ## 📝 Licença
 
