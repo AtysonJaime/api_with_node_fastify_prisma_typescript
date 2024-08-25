@@ -95,13 +95,65 @@ Esse projeto utiliza as seguinte tecnologias para o desenvolvimento:
 
 ### Contacts: `/contacts`
 
+> [!IMPORTANT]
+> Necessário autenticação, para tal, adicionar o campo email no headers da requisição com o email do usuário
+
 #### Listagem de contatos
 
+- **Método:** `GET`;
+- **Rota:** `/`;
+- **Corpo da requisição:**
+  - `email`: string;
+  - `phone`: string;
+- **Resposta:**
+  - Listagem com os seguintes campos:
+    - `id`: string;
+    - `name`: string;
+    - `email`: string;
+    - `phone`: string;
+    - `userId`: string;
+  
 #### Criação de contatos
+
+- **Método:** `POST`;
+- **Rota:** `/`;
+- **Corpo da requisição:**
+  - `name`: string;
+  - `email`: string;
+  - `phone`: string;
+- **Resposta:**
+  - `id`: string;
+  - `name`: string;
+  - `email`: string;
+  - `phone`: string;
+  - `userId`: string;
 
 #### Edição de contatos
 
+- **Método:** `PUT`;
+- **Rota:** `/:id_contato`;
+- **Corpo da requisição:**
+  - `name`: string;
+  - `email`: string;
+  - `phone`: string;
+- **Resposta:**
+  - `id`: string;
+  - `name`: string;
+  - `email`: string;
+  - `phone`: string;
+  - `userId`: string;
+
 #### Exclusão de contatos
+
+- **Método:** `DELETE`;
+- **Rota:** `/:id_contato`;
+- **Resposta:**
+  - boolean;
+
+## 💻 Implementações futuras
+
+- [ ] Autenticação com JWT;
+- [ ] Validação dos campos para edição e criação de contatos e usuário;
 
 ## 📝 Licença
 
