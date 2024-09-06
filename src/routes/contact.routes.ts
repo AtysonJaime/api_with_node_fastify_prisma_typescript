@@ -12,7 +12,7 @@ export async function contactsRoutes(fastify: FastifyInstance) {
 		async (req, reply) => {
 			//Posso desestruturar a request e type separadamente
 			const { name, email, phone } = req.body
-			const emailUser = req.headers["email"]
+			const emailUser = req.user.email
 			try {
 				const data = await contactUseCase.create({
 					email,
@@ -27,7 +27,7 @@ export async function contactsRoutes(fastify: FastifyInstance) {
 		},
 	)
 	fastify.get<{ Headers: { email: string } }>("/", async (req, reply) => {
-		const emailUser = req.headers["email"]
+		const emailUser = req.user.email
 		try {
 			const data = await contactUseCase.listAllContacts(emailUser)
 			return reply.send(data)

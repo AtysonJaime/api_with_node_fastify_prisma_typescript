@@ -9,6 +9,12 @@ export interface User {
 	updatedAt: Date
 }
 
+export interface UserLogged {
+	id: string
+	email: string
+	first_name: string
+	last_name: string
+}
 export interface UserCreate {
 	email: string
 	first_name: string

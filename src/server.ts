@@ -4,6 +4,7 @@
 import fastify, { FastifyInstance } from "fastify"
 import { userRoutes } from "./routes/user.routes"
 import { contactsRoutes } from "./routes/contact.routes"
+import { authRoutes } from "./routes/auth.routes"
 const app: FastifyInstance = fastify()
 
 app.register(userRoutes, {
@@ -14,6 +15,9 @@ app.register(userRoutes, {
 app.register(contactsRoutes, {
 	prefix: "/contacts",
 })
+
+app.register(authRoutes, {}) // Sem prefix, as rotas ficam no caminho padrão
+
 // Função para escutar o servidor na porta XXXX
 app.listen(
 	{

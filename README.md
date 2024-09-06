@@ -112,7 +112,7 @@ Esse projeto utiliza as seguinte tecnologias para o desenvolvimento:
     - `email`: string;
     - `phone`: string;
     - `userId`: string;
-  
+
 #### Criação de contatos
 
 - **Método:** `POST`;
@@ -152,8 +152,9 @@ Esse projeto utiliza as seguinte tecnologias para o desenvolvimento:
 
 ## 💻 Implementações futuras
 
-- [ ] Autenticação com JWT;
-- [ ] Validação dos campos para edição e criação de contatos e usuário;
+- [x] Autenticação com JWT;
+- [x] Validação para criação de usuário;
+- [ ] Validação dos campos para edição e criação de contatos;
 
 ## 📝 Licença
 

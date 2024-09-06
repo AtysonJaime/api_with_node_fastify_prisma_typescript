@@ -23,12 +23,17 @@ export async function userRoutes(fastify: FastifyInstance) {
 	})
 
 	fastify.get(
-		"/",
+		"/perfil",
 		{
 			preHandler: authMiddleware, // Passar por esse middleware antes de chamar a rota, fica apenas para essa rota.
 		},
-		(req, reply) => {
-			reply.send({ hello: "world" })
+		async (req, reply) => {
+			try {
+				const data = req.user //Pega os dados do usuário logado
+				return reply.send(data)
+			} catch (error) {
+				reply.send(error)
+			}
 		},
 	)
 }
