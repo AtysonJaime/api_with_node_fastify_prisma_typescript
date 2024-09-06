@@ -131,3 +131,5 @@ dist
 
 # Prisma
 migrations/
+dev.db
+dev.db-journal

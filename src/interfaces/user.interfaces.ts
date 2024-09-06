@@ -2,14 +2,18 @@
 export interface User {
 	id: string
 	email: string
-	name: string
+	first_name: string
+	last_name: string
+	password: string
 	createdAt: Date
 	updatedAt: Date
 }
 
 export interface UserCreate {
 	email: string
-	name: string
+	first_name: string
+	last_name: string
+	password: string
 }
 
 // Criar um interface para definir os métodos do repository

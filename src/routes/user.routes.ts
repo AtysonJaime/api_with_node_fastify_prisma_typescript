@@ -1,16 +1,19 @@
 import { FastifyInstance } from "fastify"
 import { UserUseCase } from "../usecases/user.usecase"
 import { UserCreate } from "../interfaces/user.interfaces"
+import { authMiddleware } from "../middlewares/auth.middleware"
 
 //Criação das rotas ao qual irá chamar a função dentro do UsesCases para as regras de negocio
 export async function userRoutes(fastify: FastifyInstance) {
 	const userUseCase = new UserUseCase()
 	fastify.post<{ Body: UserCreate }>("/", async (req, reply) => {
 		//Posso desestruturar a request e type separadamente
-		const { name, email } = req.body
+		const { first_name, last_name, password, email } = req.body
 		try {
 			const data = await userUseCase.create({
-				name,
+				first_name,
+				last_name,
+				password,
 				email,
 			})
 			return reply.send(data)
@@ -19,7 +22,13 @@ export async function userRoutes(fastify: FastifyInstance) {
 		}
 	})
 
-	fastify.get("/", (req, reply) => {
-		reply.send({ hello: "world" })
-	})
+	fastify.get(
+		"/",
+		{
+			preHandler: authMiddleware, // Passar por esse middleware antes de chamar a rota, fica apenas para essa rota.
+		},
+		(req, reply) => {
+			reply.send({ hello: "world" })
+		},
+	)
 }
