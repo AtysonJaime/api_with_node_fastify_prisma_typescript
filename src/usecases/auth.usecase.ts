@@ -19,6 +19,14 @@ export class AuthUseCase {
 			process.env.JWT_SECRET_KEY || "",
 			{ expiresIn: "8h" },
 		)
-		return { user: {id: user.id, email: user.email, first_name: user.first_name, last_name: user.last_name}, token }
+		return {
+			user: {
+				id: user.id,
+				email: user.email,
+				first_name: user.first_name,
+				last_name: user.last_name,
+			},
+			token,
+		}
 	}
 }
