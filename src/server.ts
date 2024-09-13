@@ -5,8 +5,10 @@ import fastify, { FastifyInstance } from "fastify"
 import { userRoutes } from "./routes/user.routes"
 import { contactsRoutes } from "./routes/contact.routes"
 import { authRoutes } from "./routes/auth.routes"
-const app: FastifyInstance = fastify()
+import cors from "@fastify/cors"
 
+const app: FastifyInstance = fastify()
+app.register(cors)
 app.register(userRoutes, {
 	// Registar nossos arquivos de rotas
 	prefix: "/users",

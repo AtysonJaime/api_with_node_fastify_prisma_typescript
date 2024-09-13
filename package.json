@@ -33,6 +33,7 @@
 		"typescript-eslint": "^8.2.0"
 	},
 	"dependencies": {
+		"@fastify/cors": "^9.0.1",
 		"@prisma/client": "5.18.0",
 		"bcrypt": "^5.1.1",
 		"fastify": "^4.28.1",
