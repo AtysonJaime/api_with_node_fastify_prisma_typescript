@@ -24,6 +24,7 @@ app.register(authRoutes, {}) // Sem prefix, as rotas ficam no caminho padrão
 app.listen(
 	{
 		port: 3100,
+		host: "0.0.0.0",
 	},
 	() => console.log("Server is running on port 3100"),
 )

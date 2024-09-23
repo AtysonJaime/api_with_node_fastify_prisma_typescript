@@ -1,0 +1,11 @@
+services:
+  app:
+    build: .
+    ports:
+      - "3100:3100"
+    volumes:
+      - .:/app
+    command: bash -c "pnpm install && pnpm dev"
+    restart: always
+    environment:
+      DATABASE_URL: "file:./dev.db" # Certifique-se que isso aponta corretamente para o seu banco de dados SQLite
