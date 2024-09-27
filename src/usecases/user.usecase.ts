@@ -1,5 +1,11 @@
 import { BadRequestError } from "../helpers/error"
-import { User, UserCreate, UserRepository } from "../interfaces/user.interfaces"
+import {
+	InfosUser,
+	User,
+	UserCreate,
+	UserLogged,
+	UserRepository,
+} from "../interfaces/user.interfaces"
 import { UserRepositoryPrisma } from "../repositories/user.repositories"
 import bcrypt from "bcrypt"
 
@@ -36,6 +42,144 @@ export class UserUseCase {
 			password: hashPassword,
 			email,
 		})
+		return result
+	}
+
+	/**
+	 * Get user information and respective modules.
+	 *
+	 * @param {UserLogged} user - The user object containing the email.
+	 * @return {Promise<InfosUser>} A promise that resolves to the user information.
+	 */
+	async infoUser(user: UserLogged): Promise<InfosUser> {
+		const result = {} as InfosUser
+		switch (user.email) {
+			case "jurema_rebaca@gmail.com":
+				result.user = {
+					role: "Administrador",
+					...user,
+				}
+				result.modules = [
+					{
+						name: "Inicial",
+						route: "/",
+						icon: "fa-solid fa-house",
+						subItems: [],
+					},
+					{
+						name: "Documentos",
+						route: "",
+						icon: "fa-solid fa-folder",
+						subItems: [
+							{
+								name: "Relatórios",
+								icon: "fa-solid fa-bank",
+								route: "/relatorios",
+							},
+						],
+					},
+					{
+						name: "Configurações",
+						route: "/configuracoes",
+						icon: "fa-solid fa-cog",
+						subItems: [],
+					},
+					{
+						name: "Financeiro",
+						route: "/camera",
+						icon: "fa-solid fa-dollar-sign",
+						subItems: [
+							{
+								icon: "fa-solid fa-bank",
+								name: "Bancos",
+								route: "/",
+							},
+						],
+					},
+				]
+				result.styles = [
+          // Aside
+          {
+            key: "--aside-background",
+            value: "#2C6D93"
+          },
+          {
+            key: "--aside-link-background-hover",
+            value: "#fff"
+          },
+          // Button
+          {
+            key: "--button-background",
+            value: "#2C6D93"
+          },
+          {
+            key: "--button-text-color",
+            value: "#fff"
+          },
+          {
+            key: "--button-border-color",
+            value: "#fff"
+          },
+          {
+            key: "--button-background-hover",
+            value: "#3EC3FF"
+          },
+          {
+            key: "--button-text-color-hover",
+            value: "#fff"
+          },
+          {
+            key: "--button-border-color-hover",
+            value: "#fff"
+          },
+				]
+				result.project = "argos-hidrica"
+				break
+			case "eduardo_pereira@gmail.com":
+				result.user = {
+					role: "Funcionário",
+					...user,
+				}
+				result.modules = [
+					{
+						name: "Inicial",
+						route: "/",
+						icon: "fa-solid fa-house",
+						subItems: [],
+					},
+					{
+						name: "Documentos",
+						route: "",
+						icon: "fa-solid fa-folder",
+						subItems: [
+							{
+								name: "Relatórios",
+								icon: "fa-solid fa-bank",
+								route: "/relatorios",
+							},
+						],
+					},
+				]
+				result.styles = []
+				result.project = "argos"
+				break
+			default:
+				result.user = {
+					role: "Funcionário",
+					...user,
+				}
+				result.modules = [
+					{
+						name: "icial",
+						route: "/",
+						icon: "fa-solid fa-house",
+						subItems: [],
+					},
+				]
+				result.styles = []
+				result.project = "argos"
+				break
+		}
 		return result
 	}
 }

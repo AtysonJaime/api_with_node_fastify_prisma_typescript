@@ -29,7 +29,7 @@ export async function userRoutes(fastify: FastifyInstance) {
 		},
 		async (req, reply) => {
 			try {
-				const data = req.user //Pega os dados do usuário logado
+				const data = await userUseCase.infoUser(req.user) //Pega os dados do usuário logado
 				return reply.send(data)
 			} catch (error) {
 				reply.send(error)

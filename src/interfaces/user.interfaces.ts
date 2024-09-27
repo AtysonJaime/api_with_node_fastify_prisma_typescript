@@ -14,12 +14,34 @@ export interface UserLogged {
 	email: string
 	first_name: string
 	last_name: string
+	role?: string
 }
 export interface UserCreate {
 	email: string
 	first_name: string
 	last_name: string
 	password: string
+}
+
+type TModules = {
+	name: string
+	route: string
+	icon: string
+	subItems: {
+		name: string
+		icon: string
+		route: string
+	}[]
+}
+
+export interface InfosUser {
+	user: UserLogged
+	project: string
+	styles: {
+		key: string
+		value: string
+	}[]
+	modules: TModules[]
 }
 
 // Criar um interface para definir os métodos do repository
